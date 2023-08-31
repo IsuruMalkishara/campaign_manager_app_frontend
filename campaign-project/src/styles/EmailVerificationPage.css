@@ -1,0 +1,35 @@
+.verification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: rgb(255, 255, 255);
+    font: rgb(0,0,0);
+    font-family: "Ubuntu", sans-serif;
+  }
+  
+  .verification-card {
+    width: 25rem;
+    text-align: center;
+    margin: 20px;
+  }
+
+  .verification-btn{
+    
+    background-color: rgb(29,161,242)!important;
+    /* border-radius: 20px !important; */
+    width: 150px;
+    font: rgb(255,255,255);
+    
+  }
+
+  .resend-btn{
+    
+    background-color: rgb(29,161,242) !important;
+    /* border-radius: 20px !important; */
+    width: 150px;
+    font: rgb(255,255,255);
+    
+  }
+
+  

@@ -1,0 +1,38 @@
+.signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: rgb(255, 255, 255);
+    font: rgb(0,0,0);
+    font-family: "Ubuntu", sans-serif;
+  }
+  
+  .signup-card {
+    width: 80%;
+    text-align: center;
+    margin: 20px;
+  }
+
+  .signup-btn{
+    margin-top: 10px;
+    background-color: rgb(29,161,242) !important;
+    /* border-radius: 20px !important; */
+    width: 150px;
+    font: rgb(255,255,255);
+  }
+
+  .google-login-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .google-login-btn {
+    width: 300px; 
+    text-align: center;
+  }
+
+  .signup-form{
+    display: flex;
+    justify-content: center;
+  }
