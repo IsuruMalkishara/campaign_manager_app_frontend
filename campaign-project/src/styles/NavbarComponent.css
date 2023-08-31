@@ -1,0 +1,37 @@
+
+.sidebar {
+  height: 100vh;
+  background-color: rgb(255,255,255);
+  padding-top: 20px;
+  font: rgb(255,255,255);
+}
+
+.nav-link {
+  color: rgb(255,255,255);
+  padding: 10px 20px;
+  display: flex;
+  align-items: left;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+  color: lightgray;
+}
+
+.nav-link.active {
+  color: rgb(255,255,255);
+  background-color: rgb(29,161,242) ;
+}
+
+.nav-link svg {
+  margin-right: 10px;
+}
+
+.nav-dropdown-item {
+  color: rgb(255,255,255);
+}
+
+.nav-dropdown-item:hover {
+  color: lightgray;
+}

@@ -1,0 +1,33 @@
+
+/* Style the tag container */
+.ReactTags__tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5px 0;
+  flex-direction: column;
+}
+
+/* Style individual tags */
+.ReactTags__tag {
+  border-radius: 3px;
+  padding: 4px 8px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+/* Style the input container */
+.ReactTags__tagInput {
+  flex: 1;
+  display: flex; /* Added display flex */
+  margin-top: 5px;
+}
+
+/* Style the actual input field */
+.ReactTags__tagInputField {
+  flex: 1;
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+}
