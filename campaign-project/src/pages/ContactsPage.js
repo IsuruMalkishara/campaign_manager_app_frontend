@@ -251,10 +251,16 @@ const ContactsPage = () => {
                 </div>
               </div>
             </div>
+            
             {error && (
+              <div className='row'>
+              <div className='col' style={{ textAlign:'center' }}>
               <Alert variant='danger' style={{ textAlign: 'center' }}>
                 {error}
               </Alert>
+              </div>
+              </div>
+              
             )}
             {!isTagShow && (
               <div className='row' style={{ margin:'10px' }}>

@@ -36,7 +36,7 @@ const token=sessionStorage.getItem('token');
    }
 
    importContact(data){
-    return axios.post(url+'import', data,{
+    return axios.post(url+'/import', data,{
       headers: {
           'Authorization': 'Bearer '+token, 
           'Content-Type': 'application/json',
