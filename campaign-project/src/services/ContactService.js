@@ -42,6 +42,20 @@ const token=sessionStorage.getItem('token');
           'Content-Type': 'application/json',
         }});
    }
+
+   downloadContact(text){
+    return axios.get(url+'/filter-list/download',{
+      params: {
+        searchParam: text, 
+        page: 0, 
+        size: 10, 
+      },
+      headers: {
+          'Authorization': 'Bearer '+token, 
+          'Content-Type': 'application/json',
+        },
+      });
+   }
     
 }
 export default new ContactService();

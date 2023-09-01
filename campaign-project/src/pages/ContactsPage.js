@@ -4,6 +4,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import EditIcon from '@mui/icons-material/Edit';
 import SearchIcon from '@mui/icons-material/Search';
 import SearchBar from "material-ui-search-bar";
+import { read, utils } from 'xlsx';
 import ContactService from '../services/ContactService';
 import TagService from '../services/TagService';
 import NavbarComponent from '../components/NavbarComponent';
@@ -177,6 +178,62 @@ const ContactsPage = () => {
       });
   };
 
+//download contact
+const handleDownloadContact = () => {
+  console.warn("Downloading");
+
+  ContactService.downloadContact(searchTerm)
+    .then((response) => {
+      console.warn("Received Excel data");
+
+      // Verify the XLSX data before conversion
+      console.log(response.data);
+
+      // Convert XLSX to CSV using SheetJS
+      const arrayBuffer = response.data;
+      
+      // Ensure the data is correctly converted to Uint8Array
+      const data = new Uint8Array(arrayBuffer);
+
+      // Log the sheet names to verify they match your file
+      const workbook = read(data, { type: "array" });
+      console.log("Sheet names:", workbook.SheetNames);
+
+      // Specify the correct sheet name if necessary
+      const sheetName = workbook.SheetNames[0]; 
+      console.log("Sheet data:", workbook.Sheets[sheetName]);
+
+      const csvData = utils.sheet_to_csv(workbook.Sheets[sheetName]);
+
+      // Verify the CSV data before download
+      console.log("CSV data:", csvData);
+
+
+      // Create a Blob from the CSV data
+      const blob = new Blob([csvData], { type: "text/csv;charset=utf-8" });
+
+      // Create a temporary Object URL for the Blob
+      const blobUrl = URL.createObjectURL(blob);
+
+      // Create a temporary anchor element for downloading
+      const a = document.createElement("a");
+      a.style.display = "none";
+      a.href = blobUrl;
+      a.download = "contacts.csv"; 
+      document.body.appendChild(a);
+
+      // Trigger a click event on the anchor element to initiate the download
+      a.click();
+
+      // Clean up by revoking the Object URL
+      URL.revokeObjectURL(blobUrl);
+      console.warn("Downloaded CSV");
+    })
+    .catch((error) => {
+      console.error("Error downloading contact:", error);
+    });
+};
+
 
   return (
     <div className='contact'>
@@ -245,7 +302,9 @@ const ContactsPage = () => {
                   className='button' style={{ background: 'rgb(29,161,242)', color: 'rgb(255,255,255)', width: '150px' ,margin:'10px'}}>
                     Import
                   </Button>
-                  <Button className='button' style={{ background: 'rgb(29,161,242)', color: 'rgb(255,255,255)', width: '150px',margin:'10px' }}>
+                  <Button 
+                  onClick={handleDownloadContact}
+                  className='button' style={{ background: 'rgb(29,161,242)', color: 'rgb(255,255,255)', width: '150px',margin:'10px' }}>
                     Download
                   </Button>
                 </div>
